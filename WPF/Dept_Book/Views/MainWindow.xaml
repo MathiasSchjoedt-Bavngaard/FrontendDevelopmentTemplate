@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         prism:ViewModelLocator.AutoWireViewModel ="true"
 
-        Title="{Binding Title}" Height="450" Width="300"
+        Title="{Binding Title}" Height="950" Width="300"
         Background="{DynamicResource BackgroundBrush}" FontSize="14" >
 
     <!-- en Trigger til når vi lukker programmet-->
@@ -42,7 +42,7 @@
 
             </WrapPanel>
         </DataTemplate>
-        
+
         <Style x:Key="RoundButtonStyle" TargetType="Button">
             <Setter Property="Margin" Value="10 10 10 10"/>
             <Setter Property="Padding" Value="30 0"/>
@@ -71,23 +71,24 @@
             </Setter>
         </Style>
 
-    
+
 
     </Window.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
- 
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
         <!--MENU-->
-        <Menu Grid.ColumnSpan="2" Grid.Row="0">
-         
+        <Menu Grid.Row="0">
+
             <MenuItem Header="_File">
                 <MenuItem Header="_New" Command="{Binding NewFileCommand}"/>
                 <MenuItem Header="_Open" Command="{Binding OpenFileCommand}" />
@@ -101,13 +102,13 @@
         <DockPanel  
                     Grid.Column="0" 
                     Grid.Row="1" 
-                    Margin="5">
+                    Margin="8,121,8,22">
             <Grid DockPanel.Dock="Top" Margin="5 0 5 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Name="ColumnDefinitionWidth" />
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                
+
                 <TextBlock  Grid.Column="0" 
                             Text="Name"
                             HorizontalAlignment="Center"
@@ -118,6 +119,8 @@
                             FontWeight="Bold"/>
             </Grid>
             <Button 
+
+                    Grid.Row="2"
                     DockPanel.Dock="Bottom"
                     HorizontalAlignment="Center"
                     Command="{Binding AddNewCommand}"
@@ -135,8 +138,16 @@
                         SelectedItem="{Binding CurrentDebtor}" 
                         ItemTemplate="{StaticResource DEBTOR}"
                         d:ItemsSource="{d:SampleData ItemCount=5}"
-                        IsSynchronizedWithCurrentItem="True" 
+                        IsSynchronizedWithCurrentItem="True" RenderTransformOrigin="0.5,0.5" 
                         >
+                <ListBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-0.164"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0.497"/>
+                    </TransformGroup>
+                </ListBox.RenderTransform>
                 <!--    SelectedIndex="{Binding CurrentIndex}" -->
 
                 <!--Double-click trigger på ListBox skal åbne næste vindue-->
@@ -146,9 +157,25 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </ListBox>
-            
-            
+
+
         </DockPanel>
+        <Grid Grid.Row="2"  Margin="50,10,50,57">
+            <Ellipse x:Name="face" Fill="Yellow" Stroke="Black" StrokeThickness="2" Width="200" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Ellipse x:Name="eye1" Fill="Black" Width="20" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,137,0,0"/>
+            <Ellipse x:Name="eye2" Fill="Black" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,137,70,0" RenderTransformOrigin="0.75,3.601"/>
+            <Path x:Name="smile" Data="M 100,150 Q 150,200 200,150" Stroke="Black" StrokeThickness="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-48,81,0,0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10">
+                <TextBlock Text="Color:"/>
+                <ComboBox x:Name="colorSelector" Width="70" SelectionChanged="colorSelector_SelectionChanged">
+                    <ComboBoxItem Content="Yellow" IsSelected="True"/>
+                    <ComboBoxItem Content="Red"/>
+                    <ComboBoxItem Content="Blue"/>
+                    <ComboBoxItem Content="Green"/>
+                    <ComboBoxItem Content="Purple"/>
+                </ComboBox>
+            </StackPanel>
+        </Grid>
 
 
     </Grid>

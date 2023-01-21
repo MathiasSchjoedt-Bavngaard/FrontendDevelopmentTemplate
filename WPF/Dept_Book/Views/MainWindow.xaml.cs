@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Debt_Book.Views
 {
@@ -11,7 +13,12 @@ namespace Debt_Book.Views
         {
             InitializeComponent();  
         }
-
+        
+        private void colorSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem selectedItem = (ComboBoxItem)colorSelector.SelectedItem;
+            face.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(selectedItem.Content.ToString()));
+        }
 
     }
 

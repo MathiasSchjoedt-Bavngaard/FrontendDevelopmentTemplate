@@ -24,7 +24,7 @@ namespace Debt_Book.ViewModels
         {
             Debtors = new ObservableCollection<Debtor>();
         }
-
+        
 
         #region Properties
 
@@ -289,8 +289,9 @@ namespace Debt_Book.ViewModels
              Application.Current.MainWindow.Close();
          }
 
-         #endregion
+        #endregion
 
+       
         #endregion
 
     }
