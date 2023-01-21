@@ -1,0 +1,64 @@
+.JobsPage {
+  text-align: center;
+} 
+
+.HeaderJobs {
+  background-color: #a4acff;
+  color: #656cf7;
+  padding-top: 35px;
+}
+
+.job-item {
+  border-radius: 25px;
+  background-color: #d1e8f9;
+  margin-bottom: 20px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.jobContainer {
+  margin: 1vw;
+  display: grid;
+  grid-auto-rows: minmax(50px auto);
+  grid-template-areas: 
+    "jobId jobLocation jobCustomer"
+    "jobModels jobDuration jobCommentAndButtons";
+    grid-gap: 1vw;
+}
+
+.jobIdContainer {
+  grid-area: jobId;
+  margin: 1vw;
+}
+.jobLocationContainer {
+  grid-area: jobLocation;
+  margin: 1vw;
+}
+.jobCustomerContainer {
+  grid-area: jobCustomer;
+  margin: 1vw;
+  font-size: 100em;
+}
+.jobModelsContainer {
+  grid-area: jobModels;
+
+}
+.jobDurationContainer {
+  grid-area: jobDuration;
+}
+.jobCommentAndButtonsContainer {
+  grid-area: jobCommentAndButtons;
+  display: grid;
+  grid-template-areas: 
+    "jobComments"
+    "jobButtons";
+}
+.jobButtonsContainer {
+  grid-area: jobButtons;
+  
+}
+.jobCommentsContainer {
+  grid-area: jobComments;
+}
+
+
