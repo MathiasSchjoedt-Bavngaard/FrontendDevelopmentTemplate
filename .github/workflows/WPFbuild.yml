@@ -19,11 +19,10 @@ jobs:
   build:
     name: CI Build
     runs-on: windows-latest
-    
     defaults:
-    run:
-      working-directory: ${{ env.Project_Path }}
-      
+      run:
+        working-directory: ${{ env.Project_Path }}
+
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
