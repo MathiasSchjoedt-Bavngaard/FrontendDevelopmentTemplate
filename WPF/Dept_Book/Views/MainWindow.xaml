@@ -160,7 +160,8 @@
 
 
         </DockPanel>
-        <Grid Grid.Row="2"  Margin="50,10,50,57">
+        <!-- SmileyFace -->
+        <Grid x:Name="Smiley" Grid.Row="2"  Margin="50,10,50,57">
             <Ellipse x:Name="face" Fill="Yellow" Stroke="Black" StrokeThickness="2" Width="200*" Height="200*" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Ellipse x:Name="eye1" Fill="Black" Width="20*" Height="20*" HorizontalAlignment="center" VerticalAlignment="Center" Margin="70,-90,0,0"/>
             <Ellipse x:Name="eye2" Fill="Black" Width="20*" Height="20*" HorizontalAlignment="center" VerticalAlignment="Center" Margin="0,-90,70,0" RenderTransformOrigin="0.75,3.601"/>
@@ -176,7 +177,6 @@
                 </ComboBox>
             </StackPanel>
         </Grid>
-
 
     </Grid>
 </Window>
