@@ -3,9 +3,9 @@ const config = {
     'github-actions',
     [
         'jest-junit',
-        {outputDirectory: 'reports/junit', outputName: ' jest-junit.xml.'},
+        {outputDirectory: 'reports/junit', outputName: 'js-test-results.xml'},
       ]
     ],
   };
   
-  module.exports = config;
+  export default config;
