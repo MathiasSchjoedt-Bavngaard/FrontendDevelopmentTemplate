@@ -161,10 +161,10 @@
 
         </DockPanel>
         <Grid Grid.Row="2"  Margin="50,10,50,57">
-            <Ellipse x:Name="face" Fill="Yellow" Stroke="Black" StrokeThickness="2" Width="200" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Ellipse x:Name="eye1" Fill="Black" Width="20" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,137,0,0"/>
-            <Ellipse x:Name="eye2" Fill="Black" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,137,70,0" RenderTransformOrigin="0.75,3.601"/>
-            <Path x:Name="smile" Data="M 100,150 Q 150,200 200,150" Stroke="Black" StrokeThickness="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-48,81,0,0"/>
+            <Ellipse x:Name="face" Fill="Yellow" Stroke="Black" StrokeThickness="2" Width="200*" Height="200*" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Ellipse x:Name="eye1" Fill="Black" Width="20*" Height="20*" HorizontalAlignment="center" VerticalAlignment="Center" Margin="70,-90,0,0"/>
+            <Ellipse x:Name="eye2" Fill="Black" Width="20*" Height="20*" HorizontalAlignment="center" VerticalAlignment="Center" Margin="0,-90,70,0" RenderTransformOrigin="0.75,3.601"/>
+            <Path x:Name="smile" Data="M 100,150 Q 150,200 200,150" Stroke="Black" StrokeThickness="2" HorizontalAlignment="center" VerticalAlignment="Center" Margin="-100,-90,0,0"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10">
                 <TextBlock Text="Color:"/>
                 <ComboBox x:Name="colorSelector" Width="70" SelectionChanged="colorSelector_SelectionChanged">
