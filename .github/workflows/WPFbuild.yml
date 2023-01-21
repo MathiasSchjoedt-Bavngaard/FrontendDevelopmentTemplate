@@ -1,0 +1,34 @@
+name:  Wpf Continuous Integration
+env: 
+  Folder_Path: ./WPF/
+  Test_Path: $Project_Path
+  Solution_Path: ./WPF/Dept_Book_Assinment1.sln
+# Trigger on every main branch push and pull request
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+
+jobs:
+  build:
+    name: CI Build
+    runs-on: windows-latest
+     defaults:
+      run:
+        working-directory: ${{ env.Project_Path }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+
+
