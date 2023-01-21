@@ -3,6 +3,11 @@
 
 name: Node.js CI
 
+env: 
+  Project_Path: ./React/
+  Test_Path: $Project_Path
+  Package_Lock_Path: ./React/package-lock.json
+
 on:
   push:
     branches: [ "main" ]
@@ -11,9 +16,11 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ${{ env.Project_Path }}
+        
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
@@ -28,10 +35,63 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
+        cache-dependency-path: ${{ env.Package_Lock_Path }}
+    - run: 
+        npm ci 
+    - run:
+        npm run build  --if-present
       env:
         CI: ""
-    - run: npm run test -- --ci --watchAll=false
+
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.Project_Path }}
+    needs: 
+      build
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
       env:
         CI: ""
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: ${{ env.Package_Lock_Path }}
+    
+    - run:
+        npm ci 
+    - run:
+        npm i jest-junit
+    - run: 
+        npm run build  --if-present
+      env:
+        CI: ""
+    - run:
+        npm test -- --ci --watchAll=false --passWithNoTests 
+      env:
+        CI: ""
+    - run:  
+        npm run test -- --reporters=default --reporters=github-actions --passWithNoTests
+      if: success() || failure()    # run this step even if previous step failed
+      env:
+        CI: ""
+    - run:  
+        npm test -- --ci --reporters=default --reporters=jest-junit --passWithNoTests
+      if: success() || failure()    # run this step even if previous step failed
+      env:
+        CI: ""
+        
+
+    - uses: actions/upload-artifact@v3  # upload test results
+      if: success() || failure()        # run this step even if previous step failed
+      with:
+        name: test-results
+        path: jest-junit.xml
