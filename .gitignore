@@ -1,6 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-
+.vs
 # dependencies
 /node_modules
 /.pnp
@@ -387,3 +387,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+.vs/slnx.sqlite
