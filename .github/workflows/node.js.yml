@@ -78,11 +78,11 @@ jobs:
         npm test -- --ci --watchAll=false --passWithNoTests 
       env:
         CI: ""
-    - run:  
-        npm run test -- --watchAll=false --reporters=default --reporters=github-actions --passWithNoTests
-      if: success() || failure()    # run this step even if previous step failed
-      env:
-        CI: ""
+    #- run:  
+     #   npm run test -- --watchAll=false --reporters=default --reporters=github-actions --passWithNoTests
+      #if: success() || failure()    # run this step even if previous step failed
+      #env:
+       # CI: ""
     - run:  
         npm test -- --ci --watchAll=false --reporters=default --reporters=jest-junit --passWithNoTests
       if: success() || failure()    # run this step even if previous step failed
