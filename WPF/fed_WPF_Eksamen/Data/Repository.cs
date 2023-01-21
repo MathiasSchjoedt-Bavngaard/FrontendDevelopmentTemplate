@@ -28,7 +28,7 @@ namespace fed_WPF_Eksamen.Data
             TextWriter writer = new StreamWriter(fileName);
             // Serialize all the agents.
             serializer.Serialize(writer, Class1s);
-            writer.Close();
+            writer.Close(); 
         }
 
     }
