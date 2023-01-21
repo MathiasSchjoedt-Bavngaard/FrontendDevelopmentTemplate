@@ -20,6 +20,7 @@ namespace Debt_Book.Views
             face.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(selectedItem.Content.ToString()));
         }
 
+        
     }
 
 

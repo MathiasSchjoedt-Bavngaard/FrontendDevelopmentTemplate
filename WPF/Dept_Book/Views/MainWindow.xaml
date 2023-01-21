@@ -42,6 +42,32 @@
 
             </WrapPanel>
         </DataTemplate>
+        <DataTemplate x:Key="DEBTORSDATAGRID">
+            <WrapPanel  HorizontalAlignment="Stretch">
+                <Border 
+                        
+                        BorderThickness="1"
+                        BorderBrush="Black" HorizontalAlignment="Left">
+                    <TextBlock 
+                        Text="{Binding Path=Name}"
+                        HorizontalAlignment="Left"
+                        
+                        />
+                </Border>
+
+
+                <Border 
+                        
+                        BorderThickness="1"
+                        BorderBrush="Black" HorizontalAlignment="Right">
+                    <TextBlock 
+                        Text="{Binding Path=Balance}" 
+                        HorizontalAlignment="Right"
+                        />
+                </Border>
+
+            </WrapPanel>
+        </DataTemplate>
 
         <Style x:Key="RoundButtonStyle" TargetType="Button">
             <Setter Property="Margin" Value="10 10 10 10"/>
@@ -136,8 +162,9 @@
                         Name ="MainListBox" 
                         ItemsSource="{Binding Debtors}"
                         SelectedItem="{Binding CurrentDebtor}" 
-                        ItemTemplate="{StaticResource DEBTOR}"
+                        ItemTemplate="{StaticResource DEBTORSDATAGRID}"
                         d:ItemsSource="{d:SampleData ItemCount=5}"
+                        Width="auto"
                         IsSynchronizedWithCurrentItem="True" RenderTransformOrigin="0.5,0.5" 
                         >
                 <ListBox.RenderTransform>
@@ -162,9 +189,9 @@
         </DockPanel>
         <!-- SmileyFace -->
         <Grid x:Name="Smiley" Grid.Row="2"  Margin="50,10,50,57">
-            <Ellipse x:Name="face" Fill="Yellow" Stroke="Black" StrokeThickness="2" Width="200*" Height="200*" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Ellipse x:Name="eye1" Fill="Black" Width="20*" Height="20*" HorizontalAlignment="center" VerticalAlignment="Center" Margin="70,-90,0,0"/>
-            <Ellipse x:Name="eye2" Fill="Black" Width="20*" Height="20*" HorizontalAlignment="center" VerticalAlignment="Center" Margin="0,-90,70,0" RenderTransformOrigin="0.75,3.601"/>
+            <Ellipse x:Name="face" Fill="Yellow" Stroke="Black" StrokeThickness="2" Width="200" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Ellipse x:Name="eye1" Fill="Black" Width="20" Height="20" HorizontalAlignment="center" VerticalAlignment="Center" Margin="70,-90,0,0"/>
+            <Ellipse x:Name="eye2" Fill="Black" Width="20" Height="20" HorizontalAlignment="center" VerticalAlignment="Center" Margin="0,-90,70,0" RenderTransformOrigin="0.75,3.601"/>
             <Path x:Name="smile" Data="M 100,150 Q 150,200 200,150" Stroke="Black" StrokeThickness="2" HorizontalAlignment="center" VerticalAlignment="Center" Margin="-100,-90,0,0"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10">
                 <TextBlock Text="Color:"/>
