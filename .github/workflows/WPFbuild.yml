@@ -1,9 +1,13 @@
+
+
 name:  Wpf Continuous Integration
+
 env: 
   Folder_Path: ./WPF/
   Test_Path: $Project_Path
   Solution_Path: ./WPF/Dept_Book_Assinment1.sln
 # Trigger on every main branch push and pull request
+
 on:
   push:
     branches: [ "main" ]
@@ -15,9 +19,11 @@ jobs:
   build:
     name: CI Build
     runs-on: windows-latest
-     defaults:
-      run:
-        working-directory: ${{ env.Project_Path }}
+    
+    defaults:
+    run:
+      working-directory: ${{ env.Project_Path }}
+      
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
