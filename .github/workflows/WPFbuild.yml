@@ -4,7 +4,7 @@ name:  Wpf Continuous Integration
 
 env: 
   Folder_Path: ./WPF/
-  Test_Path: $Project_Path
+  Test_Path: $Folder_Path
   Solution_Path: ./WPF/Dept_Book_Assinment1.sln
 # Trigger on every main branch push and pull request
 
@@ -21,7 +21,7 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        working-directory: ${{ env.Project_Path }}
+        working-directory: ${{ env.Folder_Path }}
 
     steps:
     - uses: actions/checkout@v3
