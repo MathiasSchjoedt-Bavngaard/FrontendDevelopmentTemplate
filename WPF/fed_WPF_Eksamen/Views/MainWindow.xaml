@@ -11,11 +11,25 @@
         Background="Transparent"
         AllowsTransparency="True"
         WindowStyle="None">
-    
+
     <Border CornerRadius="400"  Background="Lavender">
+
         <Grid>
+            <Border CornerRadius="40">
+                <Button CornerRadius="200"  Content="Button" HorizontalAlignment="Left" Margin="52,172,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="195" Height="63">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="2.124"/>
+                            <RotateTransform Angle="-44.234"/>
+                            <TranslateTransform X="-0.265" Y="0.258"/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Border>
+           
 
         </Grid>
     </Border>
-    
+
 </Window>
