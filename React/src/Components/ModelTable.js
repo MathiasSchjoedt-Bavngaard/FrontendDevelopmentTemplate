@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Paper, Chip } from "@mui/material";
+import {  Paper, Chip } from "@mui/material";
 
 export default function ModelTable({models}){
     let modellist = [];

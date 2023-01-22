@@ -1,7 +1,6 @@
 //Inspired by Tissemat
-import React from "react";
 import { useState } from "react";
-import { getJobs, postJob } from "../Services/HttpRequest/httpService";
+import { postJob } from "../Services/HttpRequest/httpService";
 import { Button, TextField, TextareaAutosize } from "@mui/material";
 import { Box } from "@mui/system";
 

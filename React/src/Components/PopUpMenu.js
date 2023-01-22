@@ -1,3 +1,4 @@
+//#region Imports
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -13,7 +14,7 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import MenuIcon from "@mui/icons-material/Menu";
 import "../Assets/MenuBar.css";
-
+//#endregion
 export default function PopUpMenu() {
   const [state, setState] = useState(false);
 
@@ -32,6 +33,8 @@ export default function PopUpMenu() {
       setState({ [anchor]: open });
     }
     else {
+
+        localStorage.setItem("role", "Manager");
         alert("PLease log in to access menu! 😊");
     }
   };
@@ -88,6 +91,7 @@ export default function PopUpMenu() {
               </ListItemButton>
             </ListItem>
           )}
+
         </>
       </List>
     </Box>
