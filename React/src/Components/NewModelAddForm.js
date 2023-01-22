@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { postModel } from '../Services/HttpRequest/httpService';
 import { Button, TextField, TextareaAutosize } from '@mui/material';
 import { Box } from '@mui/system';
@@ -40,6 +40,12 @@ const basicmodel =  {
 export default function AddModel(){
 
     const [model,setModel] = useState(basicmodel);
+    const [submitReady, setSubmitReady] = useState(false);
+    const [submitPosition, setSubmitPosition] = useState({
+    color: 'lighhtblue', 
+    margin: '0px 0px 0px 500px',
+    transition: 'all 0.5s ease-in-out, background-color 0.5s ease-in-out 1.5s', 
+      });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -54,10 +60,41 @@ export default function AddModel(){
         }
     }
 
+
     const handleFieldChange = (e) => {
         const {name, value} = e.target;
         setModel({...model, [name]: value});
     }
+
+
+    //make Mause move away when Submit not valid
+    const HowerMause = (e) => {
+        
+
+        if(document.getElementById('NewModelAddFormHTML').checkValidity()===false){
+            
+            document.getElementById('NewModelAddFormHTML').reportValidity();
+            e.preventDefault();
+            if(submitPosition.margin === '0px 500px 0px 0px'){
+                setSubmitPosition({...submitPosition, margin: '0px 0px 0px 500px', color: 'red', transition: 'all 0.2s cubic-bezier(0, 0, 0, 1), background-color 0.01s '});
+                console.log('float right');
+                console.log(submitPosition);
+            }
+
+            else{
+                console.log('float left');
+                console.log(submitPosition);
+                setSubmitPosition({...submitPosition, margin: '0px 500px 0px 0px', color: 'red', transition: 'all 0.2s cubic-bezier(0, 0, 0, 1), background-color 0.01s '});
+            }
+           
+        }
+    }
+
+    //make button Blue again
+    const Mouseleft = (e) => {
+        setSubmitPosition({...submitPosition, color: 'blue', transition: 'all 0.5s ease-in-out, background-color 1.5s ease-in-out '});
+    }
+
     
 
     return (
@@ -65,7 +102,7 @@ export default function AddModel(){
         <h1>Add new model</h1>
         <Box sx={style}>
 
-        <form onSubmit={handleSubmit}>
+        <form id='NewModelAddFormHTML' onSubmit={handleSubmit}>
             <div className="ModelName">
                 <h3>Model name</h3>
                 <TextField
@@ -152,7 +189,7 @@ export default function AddModel(){
                 <h3>Personal information</h3>
                 <TextField
                     id='birthDay'
-                    label='Birth day'
+                    label='Birthday'
                     type='date'
                     required
                     autoFocus
@@ -160,6 +197,7 @@ export default function AddModel(){
                     name='birthDay'
                     variant='outlined'
                     onChange={(e) => handleFieldChange(e)}
+                    width='300px'
                 />
                 <TextField
                     id='Nationality'
@@ -272,7 +310,16 @@ export default function AddModel(){
                 />
             </div>
             
-            <Button variant="contained" color="primary" type="submit">Submit  Model</Button>
+            <Button 
+                style={{
+                    margin: submitPosition.margin,
+                    backgroundColor: submitPosition.color,
+                    
+                    transition: submitPosition.transition,
+                }}
+            onMouseOver={(e) => HowerMause(e)}
+            onMouseLeave={(e) => Mouseleft(e)}
+            variant="contained" color="primary" type="submit">Submit  Model</Button>
             </form>
         </Box>
         
